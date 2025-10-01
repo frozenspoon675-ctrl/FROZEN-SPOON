@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FROZEN SPOON - Premium Ice Cream</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6b5ce0;
+            --secondary: #ff6b8b;
+            --accent: #42c6d6;
+            --light: #fff8f7;
+            --dark: #2d3047;
+            --text: #333333;
+            --strawberry: #fb6f71;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        .nav-icons a {
+            margin-left: 20px;
+            color: var(--primary);
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-icons a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1570197788417-0e82375c9371?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1680&q=80') no-repeat center center/cover;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin: 10px auto;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+	
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-img {
+            height: 200px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-img .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #aaa;
+            background: linear-gradient(45deg, #f3f3f3 25%, #e6e6e6 25%, #e6e6e6 50%, #f3f3f3 50%, #f3f3f3 75%, #e6e6e6 75%);
+            background-size: 20px 20px;
+        }
+
+        .product-img .image-placeholder i {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-desc {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .product-price {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Strawberry Gallery Section */
+        .strawberry-gallery {
+            padding: 60px 0;
+            background-color: var(--light);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 20px 15px 15px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            color: white;
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .gallery-caption p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        /* Product Detail Page */
+        .product-detail {
+            display: none;
+            padding: 40px 0;
+        }
+
+        .detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .product-gallery {
+            position: relative;
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .main-image .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: #aaa;
+            background: linear-gradient(45deg, #f3f3f3 25%, #e6e6e6 25%, #e6e6e6 50%, #f3f3f3 50%, #f3f3f3 75%, #e6e6e6 75%);
+            background-size: 20px 20px;
+        }
+
+        .main-image .image-placeholder i {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 10px;
+        }
+
+        .thumbnail {
+            width: 80px;
+            height: 80px;
+            background-color: var(--light);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .thumbnail .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            background: linear-gradient(45deg, #f3f3f3 25%, #e6e6e6 25%, #e6e6e6 50%, #f3f3f3 50%, #f3f3f3 75%, #e6e6e6 75%);
+            background-size: 10px 10px;
+        }
+
+        .product-details h1 {
+            margin-bottom: 20px;
+        }
+
+        .product-description {
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .product-specs {
+            margin-bottom: 30px;
+        }
+
+        .spec-item {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .spec-label {
+            width: 120px;
+            font-weight: 500;
+        }
+
+        .spec-value {
+            color: #666;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .current-price {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--secondary);
+            margin-right: 20px;
+        }
+
+        .original-price {
+            font-size: 20px;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .quantity-label {
+            margin-right: 15px;
+            font-weight: 500;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #f5f5f5;
+        }
+
+        .quantity-input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .buy-now {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .buy-now:hover {
+            background-color: var(--primary);
+        }
+
+        .back-to-products {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-to-products i {
+            margin-right: 5px;
+        }
+
+        /* Login Form */
+        .login-section {
+            background-color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .login-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: var(--light);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-title {
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .login-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .login-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        .form-footer {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ccc;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 18px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #555;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .nav-icons {
+                margin-top: 20px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .detail-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-ice-cream"></i>
+                    <span>FROZEN SPOON</span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#" class="nav-home">Home</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="nav-icons">
+                    <a href="#"><i class="fas fa-search"></i></a>
+                    <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                    <a href="#login"><i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Artisanal Ice Cream Crafted with Passion</h1>
+                    <p>Indulge in our premium, handcrafted ice creams made from the finest ingredients sourced from around the world.</p>
+                    <a href="#" class="btn">Explore Flavors</a>
+                </div>
+            </div>
+        </section>
+        <!-- Products Section -->
+        <section class="container products-section">
+            <h2 class="section-title">Our Signature Flavors</h2>
+            <div class="products">
+                <div class="product-card" data-id="1">
+                    <div class="product-img">
+                        <img src="D:\FROZEN SPOON\vanilla1.jpeg" alt="Vanilla Bourbon Ice Cream">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Vanilla Bourbon</h3>
+                        <p class="product-desc">Madagascar vanilla with a hint of bourbon</p>
+                        <p class="product-price">₹180.00</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="2">
+                    <div class="product-img">
+                        <img src="D:\FROZEN SPOON\chocolate1.png" alt="Chocolate Noir Ice Cream">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chocolate Noir</h3>
+                        <p class="product-desc">70% dark chocolate with cocoa nibs</p>
+                        <p class="product-price">₹250.00</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card" data-id="3">
+                    <div class="product-img">
+                        <img src="D:\FROZEN SPOON\strawberry1.png" alt="Strawberry Rhubarb Ice Cream">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Strawberry Rhubarb</h3>
+                        <p class="product-desc">Fresh strawberries with tangy rhubarb compote</p>
+                        <p class="product-price">₹200.00</p>
+                        <button class="add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+               </section>
+
+        <!-- Product Detail Pages -->
+        <!-- Vanilla Bourbon Detail -->
+        <section class="container product-detail" id="detail-1">
+            <a href="#" class="back-to-products"><i class="fas fa-arrow-left"></i> Back to Products</a>
+            
+            <div class="detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="D:\FROZEN SPOON\vanilla1.jpeg" alt="Vanilla Bourbon Ice Cream" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\vanilla1.jpeg" alt="Vanilla Bourbon Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\vanilla2.jpeg" alt="Vanilla Bourbon Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\vanilla3.jpeg" alt="Vanilla Bourbon Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\vanilla4.jpeg" alt="Vanilla Bourbon Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h1>Vanilla Bourbon</h1>
+                    <p class="product-description">
+                        Our Vanilla Bourbon ice cream is crafted with premium Madagascar vanilla beans and a hint of smooth bourbon. This sophisticated flavor combines the rich, creamy taste of vanilla with the warm, oaky notes of bourbon for a truly indulgent experience.
+                    </p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Ingredients:</span>
+                            <span class="spec-value">Cream, milk, sugar, Madagascar vanilla beans, bourbon, egg yolks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Allergens:</span>
+                            <span class="spec-value">Milk, eggs</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Net Weight:</span>
+                            <span class="spec-value">500ml</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Serving Size:</span>
+                            <span class="spec-value">1/2 cup (100ml)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating:</span>
+                            <span class="spec-value">4.8/5 (243 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-container">
+                        <span class="current-price">₹180.00</span>
+                        <span class="original-price">₹250.00</span>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn">-</button>
+                            <input type="text" class="quantity-input" value="1">
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chocolate Noir Detail -->
+        <section class="container product-detail" id="detail-2">
+            <a href="#" class="back-to-products"><i class="fas fa-arrow-left"></i> Back to Products</a>
+            
+            <div class="detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="D:\FROZEN SPOON\chocolate1.png" alt="Chocolate Noir Ice Cream" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\chocolate1.png" alt="Chocolate Noir Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\chocolate2.png" alt="Chocolate Noir Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\chocolate3.png" alt="Chocolate Noir Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\chocolate4.png" alt="Chocolate Noir Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h1>Chocolate Noir</h1>
+                    <p class="product-description">
+                        Indulge in the rich, intense flavor of our Chocolate Noir ice cream. Made with 70% dark chocolate from Ghana and sprinkled with crunchy cocoa nibs, this decadent treat is for true chocolate connoisseurs. Each spoonful delivers a deep, complex chocolate experience.
+                    </p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Ingredients:</span>
+                            <span class="spec-value">Cream, milk, 70% dark chocolate, sugar, cocoa nibs, egg yolks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Allergens:</span>
+                            <span class="spec-value">Milk, eggs</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Net Weight:</span>
+                            <span class="spec-value">500ml</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Serving Size:</span>
+                            <span class="spec-value">1/2 cup (100ml)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating:</span>
+                            <span class="spec-value">4.9/5 (187 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-container">
+                        <span class="current-price">₹250.00</span>
+                        <span class="original-price">₹350.00</span>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn">-</button>
+                            <input type="text" class="quantity-input" value="1">
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strawberry Rhubarb Detail -->
+        <section class="container product-detail" id="detail-3">
+            <a href="#" class="back-to-products"><i class="fas fa-arrow-left"></i> Back to Products</a>
+            
+            <div class="detail-container">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="D:\FROZEN SPOON\strawberry1.png" alt="Strawberry Rhubarb Ice Cream" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="thumbnails">
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\strawberry1.png" alt="Strawberry Rhubarb Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\strawberry2.png" alt="Strawberry Rhubarb Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\strawberry3.png" alt="Strawberry Rhubarb Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <div class="thumbnail">
+                            <img src="D:\FROZEN SPOON\strawberry4.png" alt="Strawberry Rhubarb Thumbnail" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-details">
+                    <h1>Strawberry Rhubarb</h1>
+                    <p class="product-description">
+                        A delightful combination of sweet strawberries and tangy rhubarb compote swirled throughout our creamy ice cream base. This flavor perfectly balances sweet and tart for a refreshing treat that's perfect for summer days.
+                    </p>
+                    
+                    <div class="product-specs">
+                        <div class="spec-item">
+                            <span class="spec-label">Ingredients:</span>
+                            <span class="spec-value">Cream, milk, strawberries, rhubarb, sugar, egg yolks</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Allergens:</span>
+                            <span class="spec-value">Milk, eggs</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Net Weight:</span>
+                            <span class="spec-value">500ml</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Serving Size:</span>
+                            <span class="spec-value">1/2 cup (100ml)</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Rating:</span>
+                            <span class="spec-value">4.7/5 (156 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="price-container">
+                        <span class="current-price">₹200.00</span>
+                        <span class="original-price">₹350.00</span>
+                    </div>
+                    
+                    <div class="quantity-selector">
+                        <span class="quantity-label">Quantity:</span>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn">-</button>
+                            <input type="text" class="quantity-input" value="1">
+                            <button class="quantity-btn">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button class="add-to-cart">Add to Cart</button>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FROZEN SPOON</h3>
+                    <p>Crafting premium ice cream experiences since 2025. Our products are made with the finest ingredients from around the world.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <a href="#">All Flavors</a>
+                    <a href="#">New Arrivals</a>
+                    <a href="#">Best Sellers</a>
+                    <a href="#">Special Offers</a>
+                    <a href="#">Gift Cards</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Information</h3>
+                    <a href="#">About Us</a>
+                    <a href="#">Delivery Information</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms & Conditions</a>
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Dracula Vila street 35</p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> frozenspoon675@gmail.com</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 FROZEN SPOON. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Product data
+        const products = {
+            1: {
+                name: "Vanilla Bourbon",
+                price: "₹180.00",
+                description: "Our Vanilla Bourbon ice cream is crafted with premium Madagascar vanilla beans and a hint of smooth bourbon. This sophisticated flavor combines the rich, creamy taste of vanilla with the warm, oaky notes of bourbon for a truly indulgent experience.",
+                ingredients: "Cream, milk, sugar, Madagascar vanilla beans, bourbon, egg yolks",
+                allergens: "Milk, eggs",
+                weight: "500ml",
+                serving: "1/2 cup (100ml)",
+                rating: "4.8/5 (243 reviews)",
+                color: "#ff6b8b"
+            },
+            2: {
+                name: "Chocolate Noir",
+                price: "$13.99",
+                description: "Indulge in the rich, intense flavor of our Chocolate Noir ice cream. Made with 70% dark chocolate from Ghana and sprinkled with crunchy cocoa nibs, this decadent treat is for true chocolate connoisseurs.",
+                ingredients: "Cream, milk, 70% dark chocolate, sugar, cocoa nibs, egg yolks",
+                allergens: "Milk, eggs",
+                weight: "500ml",
+                serving: "1/2 cup (100ml)",
+                rating: "4.9/5 (187 reviews)",
+                color: "#6b5ce0"
+            },
+            3: {
+                name: "Strawberry Rhubarb",
+                price: "₹200.00",
+                description: "A delightful combination of sweet strawberries and tangy rhubarb compote swirled throughout our creamy ice cream base. This flavor perfectly balances sweet and tart for a refreshing treat.",
+                ingredients: "Cream, milk, strawberries, rhubarb, sugar, egg yolks",
+                allergens: "Milk, eggs",
+                weight: "500ml",
+                serving: "1/2 cup (100ml)",
+                rating: "4.7/5 (156 reviews)",
+                color: "#42c6d6"
+            },
+            4: {
+                name: "Salted Caramel",
+                price: "$13.50",
+                description: "Our buttery caramel ice cream is swirled with ribbons of homemade caramel and sprinkled with Himalayan pink salt. The perfect balance of sweet and salty in every spoonful.",
+                ingredients: "Cream, milk, caramel (sugar, glucose, butter, cream), Himalayan pink salt, egg yolks",
+                allergens: "Milk, eggs",
+                weight: "500ml",
+                serving: "1/2 cup (100ml)",
+                rating: "4.9/5 (212 reviews)",
+                color: "#ff9e6b"
+            }
+        };
+
+        // DOM elements
+        const productCards = document.querySelectorAll('.product-card');
+        const productsSection = document.querySelector('.products-section');
+        const productDetails = document.querySelectorAll('.product-detail');
+        const backButtons = document.querySelectorAll('.back-to-products');
+        const navHome = document.querySelector('.nav-home');
+
+        // Show product detail
+        productCards.forEach(card => {
+            card.addEventListener('click', function() {
+                const productId = this.getAttribute('data-id');
+                productsSection.style.display = 'none';
+                
+                productDetails.forEach(detail => {
+                    detail.style.display = 'none';
+                });
+                
+                document.getElementById(`detail-${productId}`).style.display = 'block';
+                
+                // Scroll to top of detail section
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Back to products
+        backButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                productDetails.forEach(detail => {
+                    detail.style.display = 'none';
+                });
+                
+                productsSection.style.display = 'block';
+                
+                // Scroll to products section
+                window.scrollTo({
+                    top: productsSection.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Home navigation
+        navHome.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            productDetails.forEach(detail => {
+                detail.style.display = 'none';
+            });
+            
+            productsSection.style.display = 'block';
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Quantity controls
+        const quantityBtns = document.querySelectorAll('.quantity-btn');
+        
+        quantityBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('.quantity-input');
+                let value = parseInt(input.value);
+                
+                if (this.textContent === '+') {
+                    value++;
+                } else if (this.textContent === '-' && value > 1) {
+                    value--;
+                }
+                
+                input.value = value;
+            });
+        });
+
+        // Add to cart functionality
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                let productName;
+                
+                if (this.closest('.product-card')) {
+                    productName = this.closest('.product-card').querySelector('.product-title').textContent;
+                } else {
+                    productName = this.closest('.product-details').querySelector('h1').textContent;
+                }
+                
+                alert(`${productName} has been added to your cart!`);
+            });
+        });
+
+        // Login form validation
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.querySelector('.login-container form');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                
+                if (email && password) {
+                    alert('Login successful! Redirecting to your account.');
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
